@@ -1,4 +1,4 @@
-Employee directory that uses the following technologies
+Employee directory that shows my expertise on the following technologies / patterns
 
 - Asp.net MVC
 - Forms authentication
