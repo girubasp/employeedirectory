@@ -1,0 +1,61 @@
+﻿<!-- Edit modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div class="alert alert-danger hidden">
+                    Please fix the errors before submitting 
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="hdnEmpId"/>
+                    <input class="form-control " type="text" placeholder="Name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control " type="text" placeholder="Title" id="title">
+                </div>
+                <div class="form-group">
+                    <input class="form-control " type="text" placeholder="Location" id="location">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" placeholder="Email" id="email"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-1">
+                            Work
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control " type="tel" pattern="[0-9]{10}" placeholder="phone" id="workphone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            Home
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control " type="tel" pattern="[0-9]{10}" placeholder="phone" id="homephone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            Cell
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control " type="tel" pattern="[0-9]{10}" placeholder="phone" id="cellphone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+            </div>
+        </div>
+        <!-- /.modal-content --> 
+    </div>
+    <!-- /.modal-dialog --> 
+</div>

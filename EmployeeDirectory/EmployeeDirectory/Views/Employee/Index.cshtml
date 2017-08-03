@@ -1,0 +1,36 @@
+﻿@using Employee.Common
+@model DataAccess.Core.PagedResult<Employee.DomainObject.Employee>
+    @{
+        Layout = null;
+    }
+<div class="container">
+    <div class="row">    
+        <div class="col-md-4">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">Search by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="searchBy">
+                        <li><a href="#@SearchBy.Name">Name</a></li>
+                        <li><a href="#@SearchBy.JobTitle">Job Title</a></li>
+                        <li><a href="#@SearchBy.Location">Location</a></li>
+                        <li><a href="#@SearchBy.PhoneNumber">Phone Number</a></li>
+                        <li><a href="#@SearchBy.Email">Email</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#@SearchBy.All">All</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="searchBy" value="all" id="searchBy">         
+                <input type="text" class="form-control" name="searchTerm" placeholder="Search term..." id="searchTerm">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="searchEmployee" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="search-results">
+        @Html.Partial("SearchResults", Model)
+    </div>
+
+</div>

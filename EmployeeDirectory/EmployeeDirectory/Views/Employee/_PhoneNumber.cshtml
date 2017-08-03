@@ -1,0 +1,18 @@
+﻿@using Employee.DomainObject
+@model IList<PhoneNumber>
+
+@if (Model.Any())
+{
+    foreach (var phone in Model)
+    {
+        <div class="row">
+            <div class="col-md-3">
+                @phone.Type
+            </div>
+            <div class="col-md-8">
+                @Html.Hidden(phone.Type.ToLower() + "phone", phone.Number)
+                @phone.Number
+            </div>
+        </div>
+    }
+}

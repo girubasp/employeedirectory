@@ -1,0 +1,86 @@
+﻿@model DataAccess.Core.PagedResult<Employee.DomainObject.Employee>
+@{
+    Layout = null;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#edit" id="showCreateModal">Create New Employee</button>
+                    </div>
+                </div>
+            }
+            <div class="table-responsive">
+                <table id="mytable" class="table table-striped">
+                    <thead>
+                    <th>Name</th>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    }
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var emp in Model.Results)
+                            {
+                                <tr data-empId="@emp.Id">
+                                    <td>@emp.Name</td>
+                                    <td>@emp.JobTitle</td>
+                                    <td>@emp.Location</td>
+                                    <td>@emp.Email</td>
+                                    <td>@Html.Partial("_PhoneNumber", emp.PhoneNumbers) </td>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <td>
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                <button class="btn btn-primary btn-xs showEditModal" data-title="Edit" name="editGly" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button class="btn btn-danger btn-xs showDeleteModal" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
+                                            </p>
+                                        </td>
+
+                                    }
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="7">No results to display</td></tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="clearfix"></div>
+                
+                <ul class="pagination pull-right">
+                    <li class="@(Model.CurrentPage > 0 ? "" : "disabled")" ><a href="#"  data-pagenumber="@(Model.CurrentPage - 1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    @for (var page = 0; page < Model.PageCount; page++)
+                    {
+                        <li class='@(Model.CurrentPage == page ? "active" : "")' ><a href="#" data-pagenumber="@page">@(page+1)</a></li>
+                    }
+                   
+                    <li class="@(Model.CurrentPage < Model.PageCount -1  ? "" : "disabled")" ><a href="#" data-pagenumber="@(Model.CurrentPage+1)"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@Html.Partial("_CreateEditModal", Model)
+@Html.Partial("_DeleteModal", Model)
+<script src="~/Scripts/app/adminEmployee.js"></script>

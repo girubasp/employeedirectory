@@ -1,0 +1,8 @@
+EmployeeDirectory/packages/
+*.orig
+*.user
+EmployeeDirectory/.vs/
+EmployeeDirectory/EmployeeDirectory/logs/
+EmployeeDirectory/*/bin/
+EmployeeDirectory/*/obj/
+/EmployeeDirectory/TestResults
